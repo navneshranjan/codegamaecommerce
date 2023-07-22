@@ -1,0 +1,38 @@
+/* ProductDetail.css */
+
+.product-detail-container {
+  display: flex;
+  padding: 20px;
+}
+
+.product-detail-image img {
+  width: 300px;
+  height: 300px;
+  object-fit: contain;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 20px;
+}
+
+.product-detail-info {
+  flex: 1;
+}
+
+.product-detail-title {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.product-detail-category,
+.product-detail-price,
+.product-detail-rating {
+  margin-bottom: 5px;
+  font-size: 16px;
+  color: #666;
+}
+
+.product-detail-description {
+  font-size: 16px;
+  color: #333;
+  line-height: 1.6;
+}

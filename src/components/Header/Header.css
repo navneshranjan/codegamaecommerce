@@ -1,0 +1,61 @@
+/* Header.css */
+
+.header {
+  background-color: #2874f0;
+  color: #fff;
+  padding: 10px 20px;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 24px;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 5px;
+}
+
+.search-bar input {
+  border: none;
+  outline: none;
+  width: 400px;
+  padding: 5px;
+}
+
+.search-bar button {
+  background-color: #f4f4f4;
+  border: none;
+  outline: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.user-actions {
+  display: flex;
+  align-items: center;
+}
+
+.user-profile {
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.cart {
+  cursor: pointer;
+  background-color: #fff;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
