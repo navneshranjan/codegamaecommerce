@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import "./Products.css";
 import { Link } from "react-router-dom";
 import Cart from "../Cart/Cart";
-// Import the Cart component
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -111,7 +110,9 @@ const Products = () => {
         <div className="product-list">
           {filteredProducts.map((product) => (
             <div key={product.id} className="product-card">
-              <img src={product.image} alt={product.title} />
+              <Link to={`/product/${product.id}`} key={product.id}>
+                <img src={product.image} alt={product.title} />
+              </Link>
               <div className="product-info">
                 <h3>{product.title}</h3>
                 <div className="product-rating">{`${product.rating.rate} (${product.rating.count} ratings)`}</div>
