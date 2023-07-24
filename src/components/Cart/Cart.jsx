@@ -2,17 +2,16 @@ import React from "react";
 import "./Cart.css";
 
 const Cart = ({ cartItems, handleRemoveFromCart, products }) => {
-  const getTotalPrice = () => {
+  const getTotalItems = () => {
     return Object.keys(cartItems).reduce(
-      (total, productId) =>
-        total + cartItems[productId] * getProductPrice(productId),
+      (total, productId) => total + cartItems[productId],
       0
     );
   };
 
-  const getProductPrice = (productId) => {
+  const getItemCost = (productId) => {
     const product = products.find((p) => p.id === +productId);
-    return product ? product.price : 0;
+    return product ? product.price * cartItems[productId] : 0;
   };
 
   // Convert cartItems object into an array
@@ -21,9 +20,19 @@ const Cart = ({ cartItems, handleRemoveFromCart, products }) => {
     quantity: cartItems[productId],
   }));
 
+  const getTotalCartSum = () => {
+    return cartItemsArray.reduce(
+      (total, item) => total + getItemCost(item.id),
+      0
+    );
+  };
+
   return (
     <div className="cart-container">
-      <h2 className="cart-header">Cart</h2>
+      <div className="cart-header-container">
+        <h2 className="cart-header">Cart</h2>
+        <div className="cart-total">Total Items: {getTotalItems()}</div>
+      </div>
       {cartItemsArray.length === 0 ? (
         <p className="cart-empty">Your cart is empty.</p>
       ) : (
@@ -32,10 +41,14 @@ const Cart = ({ cartItems, handleRemoveFromCart, products }) => {
             <div key={item.id} className="cart-item">
               <div className="cart-item-name">
                 {item.quantity} x{" "}
-                {products?.find((p) => p.id === +item.id).title}
+                {products.find((p) => p.id === +item.id).title}
               </div>
               <div className="cart-item-price">
-                Rs.{item.quantity * getProductPrice(item.id)}
+                Rs.{getItemCost(item.id)} (
+                {item.quantity > 1
+                  ? `Rs.${products.find((p) => p.id === +item.id).price} each`
+                  : `1 item`}
+                )
               </div>
               <button
                 className="cart-button"
@@ -45,7 +58,7 @@ const Cart = ({ cartItems, handleRemoveFromCart, products }) => {
               </button>
             </div>
           ))}
-          <div className="cart-total">Total: Rs.{getTotalPrice()}</div>
+          <div className="cart-total-sum">Rs.{getTotalCartSum()}</div>
         </div>
       )}
     </div>

@@ -66,3 +66,16 @@
 .cart-button:hover {
   background-color: #0056b3;
 }
+.cart-header-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.cart-total-sum {
+  display: flex;
+  align-self: flex-end;
+  flex-flow: row-reverse;
+  padding-right: 92px;
+  font-weight: 700;
+}
